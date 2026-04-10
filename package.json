@@ -5,7 +5,8 @@
         "dev": "tsc && node dist/watch",
         "build": "tsc && node dist/build",
         "watch": "npm run dev",
-        "update": "git submodule update --remote --recursive"
+        "update": "git submodule update --remote --recursive",
+        "setup": "tsc && node dist/setup"
     },
     "dependencies": {
         "@types/adm-zip": "^0.5.7",
