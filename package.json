@@ -1,31 +1,24 @@
 {
-    "name": "luaver",
+    "name": "luaver.template",
     "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
     "scripts": {
         "dev": "tsc && node dist/watch",
-        "watch": "npm run dev"
+        "build": "tsc && node dist/build",
+        "watch": "npm run dev",
+        "update": "git submodule update --remote --recursive"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/ESV-Sweetplum/Luaver.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "type": "commonjs",
-    "bugs": {
-        "url": "https://github.com/ESV-Sweetplum/Luaver/issues"
-    },
-    "homepage": "https://github.com/ESV-Sweetplum/Luaver#readme",
     "dependencies": {
+        "@types/adm-zip": "^0.5.7",
         "@types/ahocorasick": "^1.0.0",
-        "@types/node": "^25.0.10",
+        "@types/luaparse": "^0.2.13",
+        "adm-zip": "^0.5.16",
         "ahocorasick": "^1.0.2",
         "chalk": "^5.6.2",
         "chokidar": "^4.0.3",
         "json5": "^2.2.3",
         "luaparse": "^0.3.1"
+    },
+    "devDependencies": {
+        "@types/node": "^22.19.15"
     }
 }
