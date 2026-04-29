@@ -1,6 +1,9 @@
 node_modules
-dist
+**/dist
+**/out
+**/builds
+.DS_Store
 config.yaml
 plugin.lua
 settings.ini
-builds
+intellisense.lua

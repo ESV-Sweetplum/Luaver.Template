@@ -1,13 +1,13 @@
 {
-    pluginName: "Luaver.Template",              // Also exposed to the PLUGIN_NAME global in Lua.
-    pluginVersion: "1.0.0",                     // Also exposed to the PLUGIN_VERSION global in Lua.
-    pluginAuthor: "YOUR_NAME",                  // Also exposed to the PLUGIN_AUTHOR global in Lua.
-    pluginDescription: "",       // Also exposed to the PLUGIN_DESCRIPTION global in Lua.
-    includeVersionInPluginName: true,           // If true, will put the version into the plugin name in the settings.ini file.
-    sources: ["QParcel", "plugin"],             // Folders which should be included in the final plugin.
-    outDir: "/",                                // Output location with respect to Luaver root.
-    lineSeparator: "\n",                        // Consistent line separator for the plugin.
-    disableVectorPacking: true,                 // Corresponds to the imgui_disable_vector_packing constant in Quaver. Should be true.
-    dontRandomizeSeed: false,                   // If true, omits the math.randomseed(os.time()) line at the top of the plugin.
-    workshopFolder: "assets"
+    pluginName: "Luaver.Template",
+    pluginVersion: "1.0.0",
+    pluginAuthor: "YOUR_NAME",
+    pluginDescription: "",
+    includeVersionInPluginName: true,
+    sources: ["QParcel", "plugin"],
+    outDir: "/",
+    lineSeparator: "\n",
+    dontRandomizeSeed: false,
+    workshopFolder: "assets",
+    buildVersionInPluginName: false
 }
