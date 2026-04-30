@@ -2,15 +2,18 @@
     "name": "luaver.template",
     "version": "1.0.0",
     "scripts": {
-        "dev": "tsc && node dist/watch",
-        "build": "tsc && node dist/build",
+        "compile": "tsc -b",
+        "dev": "npm run compile && node dist/watch",
+        "build": "npm run compile && node dist/build",
         "watch": "npm run dev",
         "update": "git submodule update --remote --recursive",
-        "setup": "tsc && node dist/setup"
+        "setup": "npm run compile && node dist/modules/setup"
     },
     "dependencies": {
+        "@inquirer/prompts": "^8.4.2",
         "@types/adm-zip": "^0.5.7",
         "@types/ahocorasick": "^1.0.0",
+        "@types/inquirer": "^9.0.9",
         "@types/luaparse": "^0.2.13",
         "adm-zip": "^0.5.16",
         "ahocorasick": "^1.0.2",

@@ -44,5 +44,5 @@
     },
     "diagnostics.libraryFiles": "Disable",
     "runtime.nonstandardSymbol": ["|lambda|", "!="],
-    "Lua.workspace.library": ["intellisense.lua"]
+    "workspace.library": ["intellisense.lua"]
 }
