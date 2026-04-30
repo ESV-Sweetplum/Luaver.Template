@@ -13,6 +13,12 @@ This batteries-included, opinionated template repository is meant to help develo
 
 Best for medium/large-scale projects and plugin hubs, this Luaver template is a practical necessity for developers and enthusiasts alike.
 
+## Informational Video
+
+If you want to get started but don't like reading, please watch the following video on creating your own plugin with this template.
+
+\<TO BE DONE LATER\>
+
 ## Installation, Setup and Usage
 
 To use this template to create a plugin of your own, follow the installation steps below:
