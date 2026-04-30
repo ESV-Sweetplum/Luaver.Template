@@ -1,12 +1,18 @@
 {
     "compilerOptions": {
         "module": "commonjs",
+        "rootDir": "../",
         "outDir": "../dist/modules",
         "strict": true,
         "types": ["node"],
         "esModuleInterop": true,
         "lib": ["ES2024"],
         "composite": true,
-        "target": "es6"
+        "target": "es6",
+        "declaration": true
     },
+    "include": [
+        "../Luaver/src/interfaces/luaverConfig.ts",
+        "../Luaver/src/interfaces/types.ts"
+    ],
 }

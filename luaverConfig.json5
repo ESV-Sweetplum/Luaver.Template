@@ -1,13 +1,1 @@
-{
-    pluginName: "Luaver.Template",
-    pluginVersion: "1.0.0",
-    pluginAuthor: "YOUR_NAME",
-    pluginDescription: "",
-    includeVersionInPluginName: true,
-    sources: ["QParcel", "plugin"],
-    outDir: "/",
-    lineSeparator: "\n",
-    dontRandomizeSeed: false,
-    workshopFolder: "assets",
-    buildVersionInPluginName: false
-}
+{}
