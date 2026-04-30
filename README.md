@@ -30,6 +30,7 @@ To use this template to create a plugin of your own, follow the installation ste
 2. If you don't have it already, install [Node.JS](https://nodejs.org/en).
 3. Install the internal dependencies by running `npm i` in a terminal set to the root of your plugin.
 4. Run the setup script via `npm run setup` and follow the setup instructions.
+   4a. If you'd like to start your own plugin without the given starter code, you can delete all files in `plugin` EXCEPT for `_awake.lua` and `_draw.lua`.
 5. Run `npm run dev` in the terminal, which will start the watcher. Now, every time you make a change to the `plugin` folder, your plugin will automatically update in Quaver.
 
 ## Basic Info
