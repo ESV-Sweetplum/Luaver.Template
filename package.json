@@ -7,7 +7,7 @@
         "build": "npm run compile && node dist/build",
         "watch": "npm run dev",
         "update": "git submodule update --remote --recursive",
-        "setup": "npm run compile && node dist/modules/setup"
+        "setup": "npm run compile && node dist/utils/ensureConfigTypes && node dist/modules/setup"
     },
     "dependencies": {
         "@inquirer/prompts": "^8.4.2",
