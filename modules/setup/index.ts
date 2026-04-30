@@ -126,7 +126,7 @@ export default async function main() {
                 value: 'devVersionInPluginName',
                 checked: true,
                 description:
-                    "If enabled, will include the version number in the title bar of the plugin's physical window. The version number will anyway be exposed to the plugin via the 'PLUGIN_VERSION' global.",
+                    "If enabled, will include the version number in the built plugin (compiled with 'npm run dev') will include the plugin's version in its folder name and its settings.ini name, making it show in the plugin list.",
                 short: 'titlebarVersion',
             },
             {
