@@ -3,6 +3,7 @@ import chalk from 'chalk';
 import * as json5 from 'json5';
 import * as fs from 'fs';
 import wrapAnsi from 'wrap-ansi';
+import { exec } from 'child_process';
 
 export default async function main() {
     console.clear();
@@ -22,7 +23,9 @@ export default async function main() {
         pluginVersion: 'v1.0.0',
     };
     if (fs.existsSync('luaverConfig.json5')) {
-        existingConfig = json5.parse(fs.readFileSync('luaverConfig.json5', 'utf-8'));
+        existingConfig = json5.parse(
+            fs.readFileSync('luaverConfig.json5', 'utf-8'),
+        );
     }
 
     const setupMode = await inquirer.select({
@@ -31,19 +34,22 @@ export default async function main() {
             {
                 name: 'Simple',
                 value: 'Simple',
-                description: 'Only set up the important information, and leave the miscellaneous info for later.',
+                description:
+                    'Only set up the important information, and leave the miscellaneous info for later.',
             },
             {
                 name: 'Explicit',
                 value: 'Explicit',
-                description: "Customize every setting to your heart's content, at the cost of time.",
+                description:
+                    "Customize every setting to your heart's content, at the cost of time.",
             },
         ],
         theme,
     });
 
     const questionCount = setupMode === 'Simple' ? 4 : 8;
-    const num = (n: number | string, t: string) => chalk.gray(`(${n}/${questionCount}) `) + t;
+    const num = (n: number | string, t: string) =>
+        chalk.gray(`(${n}/${questionCount}) `) + t;
 
     newConfig.pluginName = await inquirer.input({
         message: num(1, 'Please enter a name for your plugin.'),
@@ -62,7 +68,10 @@ export default async function main() {
     });
 
     newConfig.pluginDescription = await inquirer.input({
-        message: num(3, 'Please enter a description for your plugin. (NOT REQUIRED)'),
+        message: num(
+            3,
+            'Please enter a description for your plugin. (NOT REQUIRED)',
+        ),
         default: existingConfig.pluginDescription,
         prefill: 'editable',
         transformer: colorTransformer,
@@ -75,7 +84,10 @@ export default async function main() {
 
     if (!useBaseDirectory) {
         newConfig.outDir = await inquirer.input({
-            message: num('4a', 'In that case, please enter the desired output directory.'),
+            message: num(
+                '4a',
+                'In that case, please enter the desired output directory.',
+            ),
             required: true,
             default: existingConfig.outDir,
             prefill: 'editable',
@@ -95,7 +107,10 @@ export default async function main() {
                 ),
             ),
         );
-        fs.writeFileSync('luaverConfig.json5', json5.stringify(newConfig, { quote: '"', space: 4 }));
+        fs.writeFileSync(
+            'luaverConfig.json5',
+            json5.stringify(newConfig, { quote: '"', space: 4 }),
+        );
         return;
     }
 
@@ -155,7 +170,10 @@ export default async function main() {
 
     if (options.some(o => o.includes('VersionInPluginName'))) {
         newConfig.pluginVersion = await inquirer.input({
-            message: num('5a', 'Please enter the desired version number your plugin will display.'),
+            message: num(
+                '5a',
+                'Please enter the desired version number your plugin will display.',
+            ),
             required: true,
             default: existingConfig.pluginVersion ?? 'v1.0.0',
             prefill: 'editable',
@@ -180,7 +198,10 @@ export default async function main() {
     newConfig.sources = newConfig.sources.replaceAll(' ', '').split(',');
 
     newConfig.lineSeparator = await inquirer.select({
-        message: num(7, 'Please select the line separator used in the final plugin.'),
+        message: num(
+            7,
+            'Please select the line separator used in the final plugin.',
+        ),
         choices: [
             {
                 name: 'LF',
@@ -216,22 +237,34 @@ export default async function main() {
             ),
         ),
     );
-    fs.writeFileSync('luaverConfig.json5', json5.stringify(newConfig, { quote: '"', space: 4 }));
+    fs.writeFileSync(
+        'luaverConfig.json5',
+        json5.stringify(newConfig, { quote: '"', space: 4 }),
+    );
     return;
 }
 
 async function wrapper() {
     try {
         await main();
+        exec('node dist/transpiler', err => {
+            throw new Error(err?.message);
+        });
     } catch (e: unknown) {
         if (e instanceof Error) {
             if (e.name === 'ExitPromptError') {
-                console.log(chalk.red('You exited out of the setup process, so nothing will be updated.'));
+                console.log(
+                    chalk.red(
+                        'You exited out of the setup process, so nothing will be updated.',
+                    ),
+                );
                 return;
             } else {
                 console.log(
                     chalk.bgRedBright(
-                        chalk.black('An unknown error occurred. Please try again or report this bug on GitHub.'),
+                        chalk.black(
+                            'An unknown error occurred. Please try again or report this bug on GitHub.',
+                        ),
                     ),
                 );
 
