@@ -241,6 +241,7 @@ export default async function main() {
         'luaverConfig.json5',
         json5.stringify(newConfig, { quote: '"', space: 4 }),
     );
+    fs.rmSync('.git', { recursive: true, force: true });
     return;
 }
 
@@ -248,7 +249,7 @@ async function wrapper() {
     try {
         await main();
         exec('node dist/transpile', err => {
-            throw new Error(err?.message);
+            if (err) throw new Error(err?.message);
         });
     } catch (e: unknown) {
         if (e instanceof Error) {
