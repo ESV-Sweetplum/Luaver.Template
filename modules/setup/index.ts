@@ -247,7 +247,7 @@ export default async function main() {
 async function wrapper() {
     try {
         await main();
-        exec('node dist/transpiler', err => {
+        exec('node dist/transpile', err => {
             throw new Error(err?.message);
         });
     } catch (e: unknown) {

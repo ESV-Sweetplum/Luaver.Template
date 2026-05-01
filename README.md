@@ -25,13 +25,12 @@ If you want to get started but don't like reading, please watch the following vi
 
 To use this template to create a plugin of your own, follow the installation steps below:
 
-1. Either click the green "use this template" button at the top right and follow the instructions, or clone this repository using the command `git clone --recurse-submodules https://github.com/ESV-Sweetplum/Luaver.Template <OUTPUT_DIRECTORY>`.
+1. Either click the green "use this template" button at the top right and follow the instructions, or clone this repository using the command `git clone --recursive https://github.com/ESV-Sweetplum/Luaver.Template <OUTPUT_DIRECTORY>`.
     - If you use this template via the GitHub website, make sure to clone the new repository onto your machine.
 2. If you don't have it already, install [Node.JS](https://nodejs.org/en).
-3. Install the internal dependencies by running `npm i` in a terminal set to the root of your plugin.
-4. Run the setup script via `npm run setup` and follow the setup instructions.
-   4a. If you'd like to start your own plugin without the given starter code, you can delete all files in `plugin` EXCEPT for `_awake.lua` and `_draw.lua`.
-5. Run `npm run dev` in the terminal, which will start the watcher. Now, every time you make a change to the `plugin` folder, your plugin will automatically update in Quaver.
+3. Run the setup script via `npm run setup` and follow the setup instructions. This will also install all packages required for Luaver to run.
+   3a. If you'd like to begin your plugin's development without the given starter code, you can delete all files in `plugin` EXCEPT for `_awake.lua` and `_draw.lua`.
+4. Run `npm run dev` in the terminal, which will start the watcher. Now, every time you make a change to the `plugin` folder, your plugin will automatically update in Quaver.
 
 ## Basic Info
 

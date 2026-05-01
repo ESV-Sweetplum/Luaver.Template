@@ -9,5 +9,6 @@
         "lib": ["ES2024"],
         "composite": true,
         "target": "es6",
+        "tsBuildInfoFile": "../dist/tsconfigModules.tsbuildinfo"
     },
 }
