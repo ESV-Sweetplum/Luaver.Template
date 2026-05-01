@@ -107,10 +107,7 @@ export default async function main() {
                 ),
             ),
         );
-        fs.writeFileSync(
-            'luaverConfig.json5',
-            json5.stringify(newConfig, { quote: '"', space: 4 }),
-        );
+        finalizeSetup(newConfig);
         return;
     }
 
@@ -237,11 +234,7 @@ export default async function main() {
             ),
         ),
     );
-    fs.writeFileSync(
-        'luaverConfig.json5',
-        json5.stringify(newConfig, { quote: '"', space: 4 }),
-    );
-    fs.rmSync('.git', { recursive: true, force: true });
+    finalizeSetup(newConfig);
     return;
 }
 
@@ -273,6 +266,15 @@ async function wrapper() {
             }
         }
     }
+}
+
+function finalizeSetup(newConfig: Record<string, any>) {
+    fs.writeFileSync(
+        'luaverConfig.json5',
+        json5.stringify(newConfig, { quote: '"', space: 4 }),
+    );
+    if (!process.cwd().includes('Luaver.Template'))
+        fs.rmSync('.git', { recursive: true, force: true });
 }
 
 wrapper();
