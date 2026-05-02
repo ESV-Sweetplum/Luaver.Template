@@ -5,6 +5,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import wrapAnsi from 'wrap-ansi';
 import { exec } from 'child_process';
+import finalizeSetup from './finalize';
 
 export default async function main() {
     console.clear();
@@ -239,6 +240,9 @@ export default async function main() {
     return;
 }
 
+/**
+ * Required to run asynchronous functions at the "top level" without using ESNext.
+ */
 async function wrapper() {
     if (path.basename(process.cwd()) === 'Luaver.Template') {
         console.log(
@@ -278,39 +282,6 @@ async function wrapper() {
             }
         }
     }
-}
-
-function finalizeSetup(newConfig: Record<string, any>) {
-    fs.writeFileSync(
-        'luaverConfig.json5',
-        json5.stringify(newConfig, { quote: '"', space: 4 }),
-    );
-    fs.rmSync('.git', {
-        recursive: true,
-        force: true,
-        maxRetries: 1000,
-        retryDelay: 10,
-    });
-
-    const existingPackage = JSON.parse(
-        fs.readFileSync('package.json', 'utf-8'),
-    );
-    existingPackage.name = lintPluginName(newConfig.pluginName as string);
-    existingPackage.version = newConfig.pluginVersion;
-    existingPackage.author = newConfig.pluginAuthor;
-
-    fs.writeFileSync('package.json', JSON.stringify(existingPackage, null, 4));
-
-    // Regenerates package-lock to include new data from above.
-
-    fs.rmSync('package-lock.json');
-    exec('npm i --package-lock-only', err => {
-        if (err) throw new Error(err.message);
-    });
-}
-
-function lintPluginName(str: string) {
-    return str.toLowerCase().replaceAll(/[^a-z.~_-]/, '');
 }
 
 wrapper();
