@@ -24,8 +24,9 @@ export default function finalizeSetup(newConfig: Record<string, any>) {
     existingPackage.name = lintPluginName(newConfig.pluginName as string);
     existingPackage.version = newConfig.pluginVersion;
     existingPackage.author = newConfig.pluginAuthor;
-    if (newConfig.description)
-        existingPackage.description = newConfig.description;
+    if (newConfig.pluginDescription)
+        existingPackage.description = newConfig.pluginDescription;
+    else delete existingPackage.description;
 
     fs.writeFileSync('package.json', JSON.stringify(existingPackage, null, 4));
 
