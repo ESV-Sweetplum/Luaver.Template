@@ -24,6 +24,8 @@ export default function finalizeSetup(newConfig: Record<string, any>) {
     existingPackage.name = lintPluginName(newConfig.pluginName as string);
     existingPackage.version = newConfig.pluginVersion;
     existingPackage.author = newConfig.pluginAuthor;
+    if (newConfig.description)
+        existingPackage.description = newConfig.description;
 
     fs.writeFileSync('package.json', JSON.stringify(existingPackage, null, 4));
 
@@ -36,5 +38,5 @@ export default function finalizeSetup(newConfig: Record<string, any>) {
 }
 
 function lintPluginName(str: string) {
-    return str.toLowerCase().replaceAll(/[^a-z.~_-]/, '');
+    return str.toLowerCase().replaceAll(/[^a-z.~_-]/g, '');
 }
