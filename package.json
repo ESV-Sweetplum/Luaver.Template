@@ -1,6 +1,7 @@
 {
     "name": "luaver.template",
     "version": "1.0.0",
+    "author": "plumsteryumster",
     "scripts": {
         "compile": "tsc -b",
         "dev": "npm run compile && node dist/watch",
