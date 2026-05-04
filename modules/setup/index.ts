@@ -136,7 +136,7 @@ export default async function main() {
                 short: 'noRandomSeed',
             },
             {
-                name: 'Include version number in plugin title?',
+                name: "Include version number in the game's plugin list (on dev only)?",
                 value: 'devVersionInPluginName',
                 checked: true,
                 description:
