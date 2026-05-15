@@ -30,8 +30,9 @@ To use this template to create a plugin of your own, follow the installation ste
     - If you use this template via the GitHub website, make sure to clone the new repository onto your machine.
 2. If you don't have it already, install [Node.JS](https://nodejs.org/en).
 3. Run the setup script via `npm run setup` and follow the setup instructions. This will also install all packages required for Luaver to run.
+   
    3a. If you'd like to begin your plugin's development without the given starter code, you can delete all files in `plugin` EXCEPT for `_awake.lua` and `_draw.lua`.
-4. Run `npm run dev` in the terminal, which will start the watcher. Now, every time you make a change to the `plugin` folder, your plugin will automatically update in Quaver.
+5. Run `npm run dev` in the terminal, which will start the watcher. Now, every time you make a change to the `plugin` folder, your plugin will automatically update in Quaver.
     - Note that if you want to have automatic updates from Luaver and QParcel, you must add them as submodules yourself.
 
 ## Basic Info
