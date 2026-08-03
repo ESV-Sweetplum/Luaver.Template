@@ -14,7 +14,7 @@ export default function finalizeSetup(newConfig: Record<string, any>) {
     fs.rmSync('.git', {
         recursive: true,
         force: true,
-        maxRetries: 1000,
+        maxRetries: 10,
         retryDelay: 10,
     });
 
